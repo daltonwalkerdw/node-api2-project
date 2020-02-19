@@ -18,6 +18,7 @@ function find() {
 }
 
 function findById(id) {
+  console.log(id)
   return db('posts').where({ id: Number(id) });
 }
 
@@ -40,6 +41,7 @@ function remove(id) {
 }
 
 function findPostComments(postId) {
+  console.log(postId)
   return db('comments')
     .join('posts', 'posts.id', 'post_id')
     .select('comments.*', 'title as post')
@@ -47,6 +49,7 @@ function findPostComments(postId) {
 }
 
 function findCommentById(id) {
+  console.log(id)
   return db('comments')
     .join('posts', 'posts.id', 'post_id')
     .select('comments.*', 'title as post')
@@ -54,6 +57,7 @@ function findCommentById(id) {
 }
 
 function insertComment(comment) {
+    console.log(comment)
   return db('comments')
     .insert(comment)
     .then(ids => ({ id: ids[0] }));
